@@ -30,6 +30,13 @@ public class UsuarioLocadorModel
 
     @Column(name = "avatarUrl", nullable = true)
     protected String avatarUrl;
+
+     @Column(name = "numero")
+    protected String numero;
+
+    @Column(name = "rua")
+    protected String rua;
+
+    @Column(name = "bairro")
+    protected String bairro;
 }
-
-

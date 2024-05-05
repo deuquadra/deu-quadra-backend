@@ -25,7 +25,7 @@ public class UsuarioLocatarioController {
     @Autowired
     UsuarioLocatarioServiceImpl locatarioService;
 
-    @PostMapping("/register")
+    @PostMapping("/signup")
     public ResponseEntity register(@RequestBody @Valid  UsuarioLocatarioModel locatario){
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         String hashPassword = passwordEncoder.encode(locatario.getPassword());

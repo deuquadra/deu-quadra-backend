@@ -23,13 +23,13 @@ public class UsuarioLocadorController {
     @Autowired
     UsuarioLocadorService rentersService;
 
-    @PostMapping("/register")
-    public ResponseEntity register(@RequestBody @Valid UsuarioLocadorModel locatario){
+    @PostMapping("/signup")
+    public ResponseEntity register(@RequestBody @Valid UsuarioLocadorModel locador){
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        String hashPassword = passwordEncoder.encode(locatario.getPassword());
-        locatario.setPassword(hashPassword);
+        String hashPassword = passwordEncoder.encode(locador.getPassword());
+        locador.setPassword(hashPassword);
 
-        return ResponseEntity.status(HttpStatus.OK).body(rentersService.register(locatario));
+        return ResponseEntity.status(HttpStatus.OK).body(rentersService.register(locador));
     }
 
 
