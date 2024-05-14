@@ -40,6 +40,9 @@ public class CompaniesModel implements Serializable {
     @Column(name = "lon")
     protected Double lon;
 
+    @Column(name = "idUsuario")
+    protected Integer idUsuario;
+
     @OneToMany(mappedBy = "idEmpresa")
     protected List<CourtsModel> courtsModelList;
 

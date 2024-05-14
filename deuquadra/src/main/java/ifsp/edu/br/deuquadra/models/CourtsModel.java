@@ -36,9 +36,6 @@ public class CourtsModel implements Serializable {
     //private CompaniesModel companiesModel;
     private Integer idEmpresa;
 
-    @OneToMany(mappedBy = "idEmpresa")
-    protected List<CompaniesModel> Empresa;
-
     public CourtsModel() {
     }
 }
