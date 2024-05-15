@@ -2,6 +2,7 @@ package ifsp.edu.br.deuquadra.controllers;
 
 import ifsp.edu.br.deuquadra.models.BoundingBox;
 import ifsp.edu.br.deuquadra.models.CompaniesModel;
+import ifsp.edu.br.deuquadra.models.CoordinatesModel;
 import ifsp.edu.br.deuquadra.models.CourtsModel;
 import ifsp.edu.br.deuquadra.services.CompaniesService;
 import ifsp.edu.br.deuquadra.services.CourtsService;
@@ -33,10 +34,10 @@ public class CourtsController {
         return ResponseEntity.status(HttpStatus.OK).body(courtsService.findById(id));
     }
 
-    @GetMapping("search/{lon}&{lat}&{km}")
-    public ResponseEntity<List<CourtsModel>> FindByProximity(@PathVariable Double lon, @PathVariable Double lat,
-                                                             @PathVariable Integer km){
-        BoundingBox bb = new BoundingBox(lat, lon, km);
+    @GetMapping("/search")
+    public ResponseEntity<List<CourtsModel>> FindByProximity(@RequestBody CoordinatesModel coordinates){
+
+        BoundingBox bb = new BoundingBox(coordinates.getLat(), coordinates.getLon(), coordinates.getKm());
 
         return ResponseEntity.status(HttpStatus.OK).body(courtsService.findByProximity(bb.getMinLatitude(), bb.getMaxLatitude(), bb.getMinLongitude(), bb.getMaxLongitude()));
     }

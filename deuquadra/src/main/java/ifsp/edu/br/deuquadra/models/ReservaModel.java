@@ -27,4 +27,7 @@ public class ReservaModel {
 
     @Column(name = "locatarioId")
     private String locatarioId;
+
+    @Column(name = "idQuadra")
+    private Integer IdQuadra;
 }
