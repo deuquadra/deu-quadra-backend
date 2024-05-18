@@ -20,5 +20,5 @@ public interface CourtsService {
 
     List<CourtsModel> findByProximity(Double minLat, Double maxLat, Double minLon, Double maxLon);
 
-
+    List<CourtsModel> findQuadraByEmpresa(Integer id);
 }

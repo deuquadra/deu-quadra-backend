@@ -41,5 +41,14 @@ public class CompaniesServiceImpl implements CompaniesService {
         companiesRepository.deleteById(id);
     }
 
+    @Override
+    public List<CompaniesModel> findByIdUser(Integer id) {
+        return companiesRepository.findByIdUser(id);
+    }
 
+//    @Override
+//    public List<CompaniesModel> findByProximity(Double minLat, Double maxLat, Double minLon, Double maxLon){
+//        return companiesRepository.findByProximity(minLat, maxLat, minLon, maxLon);
+//
+//    }
 }

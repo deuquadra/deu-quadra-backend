@@ -1,8 +1,6 @@
 package ifsp.edu.br.deuquadra.services;
 
-import ifsp.edu.br.deuquadra.models.CompaniesModel;
 import ifsp.edu.br.deuquadra.models.CourtsModel;
-import ifsp.edu.br.deuquadra.repositories.CompaniesRepository;
 import ifsp.edu.br.deuquadra.repositories.CourtsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
@@ -48,6 +46,11 @@ public class CourtsServiceImpl implements CourtsService {
     public List<CourtsModel> findByProximity(Double minLat, Double maxLat, Double minLon, Double maxLon){
         return courtsRepository.findByProximity(minLat, maxLat, minLon, maxLon);
 
+    }
+
+    @Override
+    public List<CourtsModel> findQuadraByEmpresa(Integer id) {
+        return courtsRepository.findQuadraByEmpresa(id);
     }
 
 
