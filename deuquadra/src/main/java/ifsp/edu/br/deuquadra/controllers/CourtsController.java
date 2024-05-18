@@ -24,6 +24,9 @@ public class CourtsController {
     @Autowired
     CourtsService courtsService;
 
+    @Autowired
+    CompaniesService companiesService;
+
     @GetMapping("/all")
     public ResponseEntity<List<CourtsModel>> findAll() {
         return ResponseEntity.status(HttpStatus.OK).body(courtsService.findAll());
@@ -34,7 +37,11 @@ public class CourtsController {
         return ResponseEntity.status(HttpStatus.OK).body(courtsService.findById(id));
     }
 
-    @GetMapping("/search")
+    @GetMapping("quadras/{id}")
+    public ResponseEntity<List<CourtsModel>> findQuadraByEmpresa(@PathVariable Integer id){
+        return ResponseEntity.status(HttpStatus.OK).body(courtsService.findQuadraByEmpresa(id));
+    }
+    @PostMapping("/search")
     public ResponseEntity<List<CourtsModel>> FindByProximity(@RequestBody CoordinatesModel coordinates){
 
         BoundingBox bb = new BoundingBox(coordinates.getLat(), coordinates.getLon(), coordinates.getKm());

@@ -30,6 +30,11 @@ public class CompaniesController {
         return ResponseEntity.status(HttpStatus.OK).body(companieService.findById(id));
     }
 
+    @GetMapping("empresa/{id}")
+    public ResponseEntity<List<CompaniesModel>> findByIdUser(@PathVariable Integer id){
+        return ResponseEntity.status(HttpStatus.OK).body(companieService.findByIdUser(id));
+    }
+
     @PostMapping
     public ResponseEntity<CompaniesModel> create(@RequestBody CompaniesModel companiesModel){
         return ResponseEntity.status(HttpStatus.CREATED).body(companieService.save(companiesModel));
