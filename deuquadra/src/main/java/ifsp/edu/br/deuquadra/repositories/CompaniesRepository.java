@@ -18,6 +18,10 @@ public interface CompaniesRepository extends JpaRepository<CompaniesModel, Integ
 //    @Query("SELECT c FROM CompaniesModel c WHERE c.userId = :userId")
 //    List<CompaniesModel> findByIdUser(Integer id);
 
+    @Query("FROM CompaniesModel e LEFT JOIN CourtsModel q ON q.idEmpresa = e.idEmpresa WHERE " +
+            "(e.lat BETWEEN ?1 AND ?2) AND (e.lon BETWEEN ?3 AND ?4) ")
+    List<CompaniesModel> findByProximity(Double minLat, Double maxLat, Double minLon, Double maxLon);
+
     @Query("SELECT c FROM CompaniesModel c WHERE c.idUsuario = :idUsuario")
     List<CompaniesModel> findByIdUser(@Param("idUsuario") Integer idUsuario);
 

@@ -23,4 +23,7 @@ public interface CompaniesService {
         void deleteById(Integer id);
 
         List<CompaniesModel> findByIdUser(Integer id);
+
+        List<CompaniesModel> findByProximity(Double minLat, Double maxLat, Double minLon, Double maxLon);
+
 }

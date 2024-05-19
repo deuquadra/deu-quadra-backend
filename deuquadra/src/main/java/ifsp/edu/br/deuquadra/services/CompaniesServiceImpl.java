@@ -46,9 +46,9 @@ public class CompaniesServiceImpl implements CompaniesService {
         return companiesRepository.findByIdUser(id);
     }
 
-//    @Override
-//    public List<CompaniesModel> findByProximity(Double minLat, Double maxLat, Double minLon, Double maxLon){
-//        return companiesRepository.findByProximity(minLat, maxLat, minLon, maxLon);
-//
-//    }
+    @Override
+    public List<CompaniesModel> findByProximity(Double minLat, Double maxLat, Double minLon, Double maxLon){
+        return companiesRepository.findByProximity(minLat, maxLat, minLon, maxLon);
+
+    }
 }

@@ -1,6 +1,9 @@
 package ifsp.edu.br.deuquadra.controllers;
 
+import ifsp.edu.br.deuquadra.models.BoundingBox;
 import ifsp.edu.br.deuquadra.models.CompaniesModel;
+import ifsp.edu.br.deuquadra.models.CoordinatesModel;
+import ifsp.edu.br.deuquadra.models.CourtsModel;
 import ifsp.edu.br.deuquadra.services.CompaniesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
@@ -51,10 +54,12 @@ public class CompaniesController {
         return ResponseEntity.status(HttpStatus.OK).build();
     }
 
-    //    @Operation(summary = "Incluir nova especie")
-//    @ApiResponses(value = {
-//            @ApiResponse(responseCode = "200", description = "Especie criada"),
-//            @ApiResponse(responseCode = "400", description = "Bad request"),
-//            @ApiResponse(responseCode = "500", description = "Server Error")})
 
+    @PostMapping("/search")
+    public ResponseEntity<List<CompaniesModel>> FindByProximity(@RequestBody CoordinatesModel coordinates){
+
+        BoundingBox bb = new BoundingBox(coordinates.getLat(), coordinates.getLon(), coordinates.getKm());
+
+        return ResponseEntity.status(HttpStatus.OK).body(companieService.findByProximity(bb.getMinLatitude(), bb.getMaxLatitude(), bb.getMinLongitude(), bb.getMaxLongitude()));
+    }
 }
