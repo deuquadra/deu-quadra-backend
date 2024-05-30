@@ -29,5 +29,5 @@ public class ReservaModel {
     private String locatarioId;
 
     @Column(name = "idQuadra")
-    private Integer IdQuadra;
+    private Integer idQuadra;
 }

@@ -2,6 +2,7 @@ package ifsp.edu.br.deuquadra.services;
 
 import ifsp.edu.br.deuquadra.models.ReservaModel;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface ReservaService {
@@ -14,4 +15,7 @@ public interface ReservaService {
 
     void deleteById(Integer id);
 
+    List<ReservaModel> findReservaByQuadra(Integer id);
+
+    List<ReservaModel> findReservaByLocatario(Integer id);
 }
