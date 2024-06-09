@@ -46,4 +46,13 @@ public class UsuarioLocadorController {
         return ResponseEntity.status(HttpStatus.OK).body(userJwt);
     }
 
+    @PostMapping("/update")
+    public ResponseEntity update(@RequestBody @Valid UsuarioLocadorModel locador){
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        String hashPassword = passwordEncoder.encode(locador.getPassword());
+        locador.setPassword(hashPassword);
+
+        return ResponseEntity.status(HttpStatus.OK).body(rentersService.update(locador));
+    }
+
 }

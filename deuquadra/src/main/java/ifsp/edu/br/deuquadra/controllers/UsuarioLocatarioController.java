@@ -2,6 +2,7 @@ package ifsp.edu.br.deuquadra.controllers;
 
 import ifsp.edu.br.deuquadra.dtos.Locatario.LoginDto;
 import ifsp.edu.br.deuquadra.dtos.Locatario.LoginResponse;
+import ifsp.edu.br.deuquadra.models.UsuarioLocadorModel;
 import ifsp.edu.br.deuquadra.models.UsuarioLocatarioModel;
 import ifsp.edu.br.deuquadra.repositories.UsuarioLocatarioRepository;
 import ifsp.edu.br.deuquadra.services.UsuarioLocatarioServiceImpl;
@@ -48,4 +49,12 @@ public class UsuarioLocatarioController {
         return ResponseEntity.status(HttpStatus.OK).body(new LoginResponse(userJwt, userJwt));
     }
 
+    @PostMapping("/update")
+    public ResponseEntity update(@RequestBody @Valid UsuarioLocatarioModel locatario){
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        String hashPassword = passwordEncoder.encode(locatario.getPassword());
+        locatario.setPassword(hashPassword);
+
+        return ResponseEntity.status(HttpStatus.OK).body(locatarioService.update(locatario));
+    }
 }
