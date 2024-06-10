@@ -39,4 +39,9 @@ public class UsuarioLocatarioServiceImpl implements UsuarioLocatarioService {
             throw new RuntimeException("Usuario não encontrado " );
         }
     }
+
+    @Override
+    public Optional<UsuarioLocatarioModel> findById(Integer id) {
+        return usuarioLocatarioRepository.findById(id);
+    }
 }

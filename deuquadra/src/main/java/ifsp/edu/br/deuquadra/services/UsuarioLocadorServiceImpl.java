@@ -34,5 +34,10 @@ public class UsuarioLocadorServiceImpl implements UsuarioLocadorService {
         }
     }
 
+    @Override
+    public Optional<UsuarioLocadorModel> findById(Integer id) {
+        return usuarioLocadorRepository.findById(id);
+    }
+
 
 }

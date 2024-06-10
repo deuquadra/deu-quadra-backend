@@ -16,6 +16,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 @ComponentScan("ifsp.edu.br.deuquadra.*")
 @RestController
 @RequestMapping("/locatario")
@@ -56,5 +58,11 @@ public class UsuarioLocatarioController {
         locatario.setPassword(hashPassword);
 
         return ResponseEntity.status(HttpStatus.OK).body(locatarioService.update(locatario));
+    }
+
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Optional<UsuarioLocatarioModel>> findById(@PathVariable Integer id){
+        return ResponseEntity.status(HttpStatus.OK).body(locatarioService.findById(id));
     }
 }

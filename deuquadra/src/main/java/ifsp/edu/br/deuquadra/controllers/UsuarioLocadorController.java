@@ -1,6 +1,7 @@
 package ifsp.edu.br.deuquadra.controllers;
 
 import ifsp.edu.br.deuquadra.dtos.Locatario.LoginDto;
+import ifsp.edu.br.deuquadra.models.CompaniesModel;
 import ifsp.edu.br.deuquadra.models.UsuarioLocadorModel;
 import ifsp.edu.br.deuquadra.models.UsuarioLocatarioModel;
 import ifsp.edu.br.deuquadra.repositories.UsuarioLocadorRepository;
@@ -13,6 +14,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @ComponentScan("ifsp.edu.br.deuquadra.*")
 @RestController
@@ -53,6 +56,11 @@ public class UsuarioLocadorController {
         locador.setPassword(hashPassword);
 
         return ResponseEntity.status(HttpStatus.OK).body(rentersService.update(locador));
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Optional<UsuarioLocadorModel>> findById(@PathVariable Integer id){
+        return ResponseEntity.status(HttpStatus.OK).body(rentersService.findById(id));
     }
 
 }
